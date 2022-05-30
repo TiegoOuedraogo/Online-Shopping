@@ -1,0 +1,26 @@
+<!-- creating the products -->
+<h2>Products</h2>
+
+<!-- Creating the list of the products -->
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+  <h3>
+    <!-- details of product and link  -->
+    <a
+      [title]="product.name + 'details'"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.name }}
+    </a>
+  </h3>
+  <!-- product description -->
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <!-- button to share -->
+  <button type="button" (click)="share()">Share</button>
+
+  <!-- <app-product-alerts [product]="product"> </app-product-alerts> -->
+
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
